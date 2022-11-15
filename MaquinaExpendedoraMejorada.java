@@ -40,14 +40,19 @@ public class MaquinaExpendedoraMejorada {
     /**
      * Devuelve el precio del billete
      */
-    public int vaciarDineroDeLaMaquina() {
-        int dineroAcumulado = balanceClienteActual + totalDineroAcumulado;
+  
+   public int vaciarDineroDeLaMaquina() {
+        int sumaRetirada = balanceClienteActual + totalDineroAcumulado;
+        if (balanceClienteActual == 0){
+            totalDineroAcumulado = 0;
+        }
+        else{
+            sumaRetirada = -1;
+            System.out.println("Hay una operacion en curso, actualmente no se puede retirar el dinero");
+        }
+        return sumaRetirada;
 
-        balanceClienteActual = 0;
-        totalDineroAcumulado = 0;
-
-        return dineroAcumulado;
-    }
+    }       
     
     /**
      * Devuelve el precio del billete
