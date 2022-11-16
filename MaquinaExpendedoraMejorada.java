@@ -101,6 +101,7 @@ public class MaquinaExpendedoraMejorada {
      */
     public void imprimirBillete() {
         int cantidadDeDineroQueFalta = precioBillete - balanceClienteActual;
+        numeroBilletesVendidos +=1;
         if  (cantidadDeDineroQueFalta <= 0) {     
             // Simula la impresion de un billete
             System.out.println("##################");
@@ -109,9 +110,6 @@ public class MaquinaExpendedoraMejorada {
             System.out.println("# " + precioBillete + " euros.");
             System.out.println("##################");
             System.out.println(); 
-            
-            numeroBilletesVendidos +=1;
-            
             // Actualiza el total de dinero acumulado en la maquina
             totalDineroAcumulado = totalDineroAcumulado + precioBillete;
             // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
