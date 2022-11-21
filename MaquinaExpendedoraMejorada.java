@@ -14,19 +14,23 @@ public class MaquinaExpendedoraMejorada {
     private int numeroBilletesVendidos;
     
     private boolean billetePremiado;
-
+    
+    private int maximoBilletes;
+    
     /**
      * Crea una maquina expendedora de billetes de tren con el 
      * precio del billete y el origen y destino dados. Se asume que el precio
      * del billete que se recibe es mayor que 0.
      */
-    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino, boolean premio) {
+    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino, boolean premio, int maximo) {
         precioBillete = precioDelBillete;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
         estacionOrigen = origen;
         estacionDestino = destino;
         billetePremiado = premio;
+        maximoBilletes = maximo;
+        numeroBilletesVendidos = 0;
     }
 
     /**
@@ -34,13 +38,15 @@ public class MaquinaExpendedoraMejorada {
      * precio del billete y el origen y destino dados. Se asume que el precio
      * del billete que se recibe es mayor que 0.
      */
-    public MaquinaExpendedoraMejorada(boolean premio){
+    public MaquinaExpendedoraMejorada(boolean premio, int maximo ){
         precioBillete = 20 ;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
         estacionOrigen = "León";
         estacionDestino = "Barcelona";
         billetePremiado = premio;
+        maximoBilletes = maximo;
+        numeroBilletesVendidos = 0;
     }
       
     /**
@@ -97,7 +103,13 @@ public class MaquinaExpendedoraMejorada {
         }
         else {
             System.out.println(cantidadIntroducida + " no es una cantidad de dinero valida.");
-        }        
+        }   
+        if (numeroBilletesVendidos < maximoBilletes){
+            
+        }
+        else{
+            System.out.println(cantidadIntroducida + " La cantidad introducida no es válida");
+        }
     }
 
     /**
@@ -125,13 +137,15 @@ public class MaquinaExpendedoraMejorada {
                     
         } 
         if (billetePremiado == true){
-                double descuento = precioBillete * 0.25;
-                System.out.println("¡El billete ha obtenido un premio de "+ descuento + "€ de descuento!");
+             double descuento = precioBillete * 0.25;
+            System.out.println("¡El billete ha obtenido un premio de "+ descuento + "€ de descuento!");
         }
-        else{
-        System.out.println("El billete no ha obtenido premio ");
-        }
-    
+    if (numeroBilletesVendidos < maximoBilletes){
+        
+    }
+    else {
+        System.out.println("No quedan mas billetes");
+    }
     }
     
     /**
