@@ -12,18 +12,21 @@ public class MaquinaExpendedoraMejorada {
     private String estacionDestino;
    
     private int numeroBilletesVendidos;
+    
+    private boolean billetePremiado;
 
     /**
      * Crea una maquina expendedora de billetes de tren con el 
      * precio del billete y el origen y destino dados. Se asume que el precio
      * del billete que se recibe es mayor que 0.
      */
-    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino) {
+    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino, boolean premio) {
         precioBillete = precioDelBillete;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
         estacionOrigen = origen;
         estacionDestino = destino;
+        billetePremiado = premio;
     }
 
     /**
@@ -31,12 +34,13 @@ public class MaquinaExpendedoraMejorada {
      * precio del billete y el origen y destino dados. Se asume que el precio
      * del billete que se recibe es mayor que 0.
      */
-    public MaquinaExpendedoraMejorada() {
+    public MaquinaExpendedoraMejorada(boolean premio){
         precioBillete = 20 ;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
         estacionOrigen = "León";
         estacionDestino = "Barcelona";
+        billetePremiado = premio;
     }
       
     /**
@@ -114,11 +118,20 @@ public class MaquinaExpendedoraMejorada {
             totalDineroAcumulado = totalDineroAcumulado + precioBillete;
             // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
             balanceClienteActual = balanceClienteActual - precioBillete;
+            // El cliente un descuento del 25%
         }
         else {
             System.out.println("Necesitas introducir " + (cantidadDeDineroQueFalta) + " euros mas!");
                     
-        }            
+        } 
+        if (billetePremiado == true){
+                double descuento = precioBillete * 0.25;
+                System.out.println("¡El billete ha obtenido un premio de "+ descuento + "€ de descuento!");
+        }
+        else{
+        System.out.println("El billete no ha obtenido premio ");
+        }
+    
     }
     
     /**
