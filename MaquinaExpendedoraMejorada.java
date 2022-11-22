@@ -63,7 +63,6 @@ public class MaquinaExpendedoraMejorada {
             System.out.println("Hay una operacion en curso, actualmente no se puede retirar el dinero");
         }
         return sumaRetirada;
-
     }       
 
     /**
@@ -132,18 +131,17 @@ public class MaquinaExpendedoraMejorada {
                 balanceClienteActual = balanceClienteActual - precioBillete;
                 // El cliente un descuento del 25%
             }
-            else {
-                System.out.println("Necesitas introducir " + (cantidadDeDineroQueFalta) + " euros mas!");
-
-            } 
-            if (billetePremiado == true){
-                double descuento = precioBillete * 0.25;
-                System.out.println("¡El billete ha obtenido un premio de "+ descuento + "€ de descuento!");
-
-            }
-            else {
-                System.out.println("No quedan mas billetes");
-            }
+            if (numeroBilletesVendidos % 4 == 0)
+                if (billetePremiado == true){
+                    double descuento = precioBillete * 0.25;
+                    System.out.println("¡El billete ha obtenido un premio de "+ descuento + "€ de descuento!");
+                }
+                else {
+                    System.out.println("Necesitas introducir " + (cantidadDeDineroQueFalta) + " euros mas!");
+                }
+        }
+        else{    
+            System.out.println("No quedan mas billetes");
         }
     }
 
